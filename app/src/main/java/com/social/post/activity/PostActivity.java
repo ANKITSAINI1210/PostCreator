@@ -1,5 +1,6 @@
 package com.social.post.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +29,6 @@ public class PostActivity extends AppCompatActivity implements PostClickListener
         setUpToolbar();
         init();
         setUpFab();
-        setUpRecycler();
     }
 
     private void setUpFab() {
@@ -36,7 +36,8 @@ public class PostActivity extends AppCompatActivity implements PostClickListener
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(PostActivity.this, CreatePostActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -58,6 +59,11 @@ public class PostActivity extends AppCompatActivity implements PostClickListener
         dataBaseHandler = new DataBaseHandler(this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setUpRecycler();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
