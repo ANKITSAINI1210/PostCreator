@@ -83,6 +83,8 @@ public class PostActivity extends AppCompatActivity implements PostClickListener
 
     @Override
     public void onPostClick(PostModel postModel) {
-
+        Intent intent = new Intent(this, PostDetailsActivity.class);
+        intent.putExtra("postDetails", postModel);
+        startActivity(intent);
     }
 }
